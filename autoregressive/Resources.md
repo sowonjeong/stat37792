@@ -10,3 +10,6 @@
 
 # Code
 * [Hugo Larochelle website](https://info.usherbrooke.ca/hlarochelle/code/)
+
+# ETC
+* [Big O Notation](https://towardsdatascience.com/introduction-to-big-o-notation-820d2e25d3fd)

@@ -28,7 +28,7 @@ import sys,os,fcntl
 
 if __name__== '__main__':
     if len(sys.argv) != 8:
-        print 'Usage: run_nade dataset learning_rate decrease_constant hidden_size seed order_seed untied_weights'
+        print('Usage: run_nade dataset learning_rate decrease_constant hidden_size seed order_seed untied_weights')
         sys.exit()
     
     dataset = sys.argv[1]
@@ -53,24 +53,24 @@ import copy, time
 import numpy as np
 import mlpython.mlproblems.generic as mlpb
 
-print 'Loading dataset'
+print('Loading dataset')
 datadir = os.path.abspath(os.path.curdir) + '/data/'
 
-datasets = ['adult',
-            'binarized_mnist',
-            'connect4',
-            'dna',
-            'mushrooms',
-            'nips',
-            'ocr_letters',
-            'rcv1',
-            'web']
+datasets = [#'adult',
+            'binarized_mnist']#,
+            #'connect4',
+            #'dna',
+            #'mushrooms',
+            #'nips',
+            #'ocr_letters',
+            #'rcv1',
+            #'web']
 
 if dataset not in datasets:
     raise ValueError('dataset '+dataset+' unknown')
 
-exec 'import mlpython.datasets.'+dataset+' as mldataset'
-exec 'datadir = datadir + \''+dataset+'/\''
+exec('import mlpython.datasets.'+dataset+' as mldataset')
+exec('datadir = datadir + \''+dataset+'/\'')
 all_data = mldataset.load(datadir,load_to_memory=True)
 
 train_data, train_metadata = all_data['train']
@@ -95,7 +95,7 @@ if not os.path.exists(result_file):
     file.write(header_line)
     file.close()
 
-print 'Training NADE'
+print('Training NADE')
 
 rng_order = np.random.mtrand.RandomState(order_seed)
 input_order = range(train_metadata['input_size'])
@@ -125,20 +125,20 @@ for stage in range(1,501):
         break
     model.n_stages = stage
     this_time = time.time()
-    print 'Training epoch',stage,'...',
+    print('Training epoch',stage,'...',)
     sys.stdout.flush()
     model.train(trainset)
-    print 'finished after',time.time()-this_time,'seconds'
+    print('finished after',time.time()-this_time,'seconds')
     sys.stdout.flush()
 
-    print 'Evaluating on validation set ...',
+    print('Evaluating on validation set ...',)
     sys.stdout.flush()
     this_time = time.time()
     outputs, costs = model.test(validset)
     error = np.mean(costs,axis=0)[0]
     error_std = np.std(costs,axis=0,ddof=1)[0]/np.sqrt(len(costs))
-    print 'finished after',time.time()-this_time,'seconds'
-    print 'NLL: ' + str(error)
+    print('finished after',time.time()-this_time,'seconds')
+    print('NLL: ' + str(error))
     sys.stdout.flush()
     if error < best_val_error:
         best_val_error = error
@@ -150,7 +150,7 @@ for stage in range(1,501):
         n_incr_error += 1
 
 
-print 'Evaluating best model on train and test set'
+print('Evaluating best model on train and test set')
 outputs, costs = best_model.test(trainset)
 best_train_error = np.mean(costs,axis=0)[0]
 best_train_error_std = np.std(costs,axis=0,ddof=1)[0]/np.sqrt(len(costs))

@@ -181,7 +181,7 @@ class NADE(mlgeneric.OnlineLearner):
 
    def verify_gradients(self,untied_weights):
       
-      print 'WARNING: calling verify_gradients reinitializes the learner'
+      print('WARNING: calling verify_gradients reinitializes the learner')
 
       rng = np.random.mtrand.RandomState(1234)
       input_order = range(20)
@@ -215,7 +215,7 @@ class NADE(mlgeneric.OnlineLearner):
 
       self.update_learner(example)
       self.W[:] = W_copy
-      print 'dW diff.:',np.sum(np.abs(self.dW.ravel()-emp_dW.ravel()))/self.W.ravel().shape[0]
+      print('dW diff.:',np.sum(np.abs(self.dW.ravel()-emp_dW.ravel()))/self.W.ravel().shape[0])
 
       b_copy = np.array(self.b)
       emp_db = np.zeros(self.b.shape)
@@ -234,7 +234,7 @@ class NADE(mlgeneric.OnlineLearner):
 
       self.update_learner(example)
       self.b[:] = b_copy
-      print 'db diff.:',np.sum(np.abs(self.db.ravel()-emp_db.ravel()))/self.b.ravel().shape[0]
+      print('db diff.:',np.sum(np.abs(self.db.ravel()-emp_db.ravel()))/self.b.ravel().shape[0])
 
       c_copy = np.array(self.c)
       emp_dc = np.zeros(self.c.shape)
@@ -253,7 +253,7 @@ class NADE(mlgeneric.OnlineLearner):
 
       self.update_learner(example)
       self.c[:] = c_copy
-      print 'dc diff.:',np.sum(np.abs(self.dc.ravel()-emp_dc.ravel()))/self.c.ravel().shape[0]
+      print('dc diff.:',np.sum(np.abs(self.dc.ravel()-emp_dc.ravel()))/self.c.ravel().shape[0])
 
       if untied_weights:
          V_copy = np.array(self.V)
@@ -274,6 +274,6 @@ class NADE(mlgeneric.OnlineLearner):
          
          self.update_learner(example)
          self.V[:] = V_copy
-         print 'dV diff.:',np.sum(np.abs(self.dV.ravel()-emp_dV.ravel()))/self.V.ravel().shape[0]
+         print('dV diff.:',np.sum(np.abs(self.dV.ravel()-emp_dV.ravel()))/self.V.ravel().shape[0])
 
 

@@ -25,7 +25,8 @@
 # or implied, of Hugo Larochelle.
 
 import numpy as np
-import scipy.weave
+# from scipy.weave
+# import numba # substitute weave with numba
 import nonlinear_
 
 def sigmoid(input,output):
