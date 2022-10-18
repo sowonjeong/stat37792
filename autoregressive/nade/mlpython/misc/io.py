@@ -24,9 +24,9 @@
 # authors and should not be interpreted as representing official policies, either expressed
 # or implied, of Hugo Larochelle.
 
-import cPickle,os
+import pickle,os
 import numpy as np
-import scipy.io
+from scipy import io
 from gzip import GzipFile as gfile
 
 # This module includes useful functions for loading and saving datasets or objects in general

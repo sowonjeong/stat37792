@@ -28,36 +28,36 @@ import sys,os,fcntl
 
 if __name__== '__main__':
     if len(sys.argv) != 1:
-        print 'Usage: download_datasets'
+        print('Usage: download_datasets')
         sys.exit()
 
-import mlpython.datasets.adult as adult
+#import mlpython.datasets.adult as adult
 import mlpython.datasets.binarized_mnist as binarized_mnist
-import mlpython.datasets.connect4 as connect4
-import mlpython.datasets.dna as dna
-import mlpython.datasets.mushrooms as mushrooms
-import mlpython.datasets.nips as nips
-import mlpython.datasets.ocr_letters as ocr_letters
-import mlpython.datasets.rcv1 as rcv1
-import mlpython.datasets.web as web
+#import mlpython.datasets.connect4 as connect4
+#import mlpython.datasets.dna as dna
+#import mlpython.datasets.mushrooms as mushrooms
+#import mlpython.datasets.nips as nips
+#import mlpython.datasets.ocr_letters as ocr_letters
+#import mlpython.datasets.rcv1 as rcv1
+#import mlpython.datasets.web as web
 
 if not os.path.exists('data/'):
     os.makedirs('data/')
 
-datasets = [ 'adult',
-             'binarized_mnist',
-             'connect4',
-             'dna',
-             'mushrooms',
-             'nips',
-             'ocr_letters',
-             'rcv1',
-             'web']
+datasets = [# 'adult',
+             'binarized_mnist']#,
+            # 'connect4',
+            # 'dna',
+            # 'mushrooms',
+            # 'nips',
+            # 'ocr_letters',
+            # 'rcv1',
+            # 'web']
 
 for dataset in datasets:
-    print '* Obtaining dataset',dataset,'*'    
+    print ('* Obtaining dataset',dataset,'*'    )
     dir = 'data/'+dataset
     if not os.path.exists(dir):
         os.makedirs(dir)
     eval(dataset+'.obtain(dir)')
-    print ''
+    print ('')
