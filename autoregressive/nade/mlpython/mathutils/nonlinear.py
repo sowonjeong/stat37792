@@ -25,7 +25,8 @@
 # or implied, of Hugo Larochelle.
 
 import numpy as np
-# from scipy.weave
+# import scipy.weave
+import weave
 # import numba # substitute weave with numba
 import nonlinear_
 

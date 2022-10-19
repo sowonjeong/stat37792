@@ -25,16 +25,20 @@
 # or implied, of Hugo Larochelle.
 
 from distutils.core import setup, Extension
+import numpy
 
 module1 = Extension('linalg_',
                     sources = ['linalg_.c'],
-                    libraries = ['blas','lapack'])
+                    libraries = ['blas','lapack'],
+                    include_dirs=[numpy.get_include()])
 
 module2 = Extension('nonlinear_',
                     sources = ['nonlinear_.c'],
-                    libraries = [])
+                    libraries = [],
+                    include_dirs=[numpy.get_include()])
 
 setup (name = 'MLPythonMath',
        version = '1.0',
        description = 'Simple interfaces to useful math routines',
-       ext_modules = [module1,module2])
+       ext_modules = [module1,module2],
+       include_dirs=[numpy.get_include()])
