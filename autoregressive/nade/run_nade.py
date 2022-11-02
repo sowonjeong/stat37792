@@ -73,7 +73,7 @@ exec('import mlpython.datasets.'+dataset+' as mldataset')
 exec('datadir = datadir + \''+dataset+'/\'')
 all_data = mldataset.load(datadir,load_to_memory=True)
 
-train_data, train_metadata = all_data['train']
+train_data, train_metadata = all_data['train'] # data, label
 if dataset == 'binarized_mnist' or dataset == 'nips': 
     trainset = mlpb.MLProblem(train_data,train_metadata)
 else:
